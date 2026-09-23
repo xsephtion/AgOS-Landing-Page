@@ -200,7 +200,7 @@ const STEPS: { id: string; title: string; body: string; alt: string; view: React
   {
     id: 'people',
     title: 'The org chart is part of the answer.',
-    body: 'People holds the directory, the org chart and onboarding checklists. Ask who owns something or who a new hire should meet, and the answer comes from the same record your team keeps up to date.',
+    body: 'People holds the directory, the org chart and onboarding checklists. Ask who someone reports to or who a new hire should meet, and the answer comes from the same record your team keeps up to date.',
     alt: 'A new hire’s week-one onboarding checklist, with an answer naming their manager.',
     view: <App place="people" title="People" tools={<Tabs items={['Directory', 'Onboarding', 'Org chart']} on="Onboarding" />}>{PeopleView}</App>,
   },

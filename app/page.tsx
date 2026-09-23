@@ -107,7 +107,7 @@ export default function Page() {
         <div className="footer-brand">
           <a className="brand brand-lg" href="#top"><img src="/agos-mark.png" width={36} height={36} alt="" /> AgOS</a>
           <p>Ask your company a question and get an answer.</p>
-          <p className="footer-by">Made by Zentarai Labs</p>
+          <p className="footer-by">Made by AgOS</p>
         </div>
         <nav className="footer-cols" aria-label="Footer">
           <div>
@@ -133,7 +133,7 @@ export default function Page() {
           </div>
         </nav>
         <p className="footer-base">
-          <span>© {new Date().getFullYear()} Zentarai Labs</span>
+          <span>© {new Date().getFullYear()} AgOS</span>
           <span>Product views on this page are illustrations with sample data.</span>
         </p>
       </footer>

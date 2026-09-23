@@ -142,7 +142,7 @@ export function Agents() {
         <Row dir="right" label="Skills">{SKILL_CHIPS}</Row>
       </div>
       <p className="wrap marquee-note">
-        Skills think and write; they never act on their own. Write a new one in a few sentences from the console.
+        Skills think and write; they never act on their own. The cards show sample work for Northbay.
       </p>
     </section>
   );
