@@ -118,9 +118,13 @@ export function AskDemo() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Follow the answer as it streams, but never scroll the question itself out of view.
   useEffect(() => {
     const el = thread.current;
-    if (el) el.scrollTop = el.scrollHeight;
+    if (!el) return;
+    const bottom = el.scrollHeight - el.clientHeight;
+    const bubble = el.querySelector<HTMLElement>('.bubble');
+    el.scrollTop = bubble ? Math.min(bottom, bubble.offsetTop - 8) : bottom;
   }, [steps, words, phase]);
 
   const submit = (e?: FormEvent) => {
