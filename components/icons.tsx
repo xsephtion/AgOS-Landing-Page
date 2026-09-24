@@ -95,3 +95,4 @@ export const IconUpload = (p: P) => <Ui w={1.8} {...p}><path d="M12 15V4M7.5 8.5
 export const IconCode = (p: P) => <Ui w={1.9} {...p}><path d="M9 7l-5 5 5 5M15 7l5 5-5 5" /></Ui>;
 export const IconMegaphone = (p: P) => <Ui w={1.8} {...p}><path d="M4 10v4h3l7 4V6l-7 4zM17.5 9.5a3.5 3.5 0 0 1 0 5" /></Ui>;
 export const IconPen = (p: P) => <Ui w={1.8} {...p}><path d="M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19l-4 1z" /></Ui>;
+export const IconDash = (p: P) => <Ui w={2} {...p}><path d="M7 12h10" /></Ui>;

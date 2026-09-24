@@ -31,6 +31,19 @@ colors:
   wash-pink: "#F9A8C8"
   wash-lavender: "#B7A6FF"
   wash-blue: "#9DC4FF"
+  wash-apricot: "#FFD9BE"
+  closing-base: "#F3ECEE"
+  mark-blue: "#8FA6FF"
+  mark-violet: "#C79BF2"
+  mark-peach: "#FFB27A"
+  face-peach: "#FFD6B8"
+  face-pink: "#FBC4D8"
+  face-blue: "#C8D4FF"
+  ink-hover: "#34322D"
+  on-ink-muted: "#CFCAC2"
+  selection: "#DCE3FF"
+  callout-bg: "#FDF7EE"
+  callout-ink: "#7A5A34"
 typography:
   display:
     fontFamily: "Poppins, ui-sans-serif, system-ui, sans-serif"
@@ -63,6 +76,21 @@ typography:
   label:
     fontFamily: "Manrope, ui-sans-serif, system-ui, sans-serif"
     fontSize: "12.5px"
+    fontWeight: 700
+    lineHeight: 1.4
+  ui-body:
+    fontFamily: "Manrope, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: 1.5
+  ui-row:
+    fontFamily: "Manrope, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "13.5px"
+    fontWeight: 700
+    lineHeight: 1.4
+  ui-meta:
+    fontFamily: "Manrope, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "11.5px"
     fontWeight: 700
     lineHeight: 1.4
 rounded:
@@ -158,6 +186,7 @@ A restrained warm-neutral system with one working accent and a four-colour wash 
 - **Citation Blue Wash** (`accent-soft`): the ground under citation chips, Task labels and the in-panel Ask answers.
 
 ### Secondary
+- **Mark and face gradients** (`mark-blue` to `mark-violet` to `mark-peach`; `face-peach` to `face-pink` to `face-blue`): the agent tiles and relevance bars use the mark gradient; avatar initials sit on the lifted face gradient so ink text stays readable.
 - **The Wash** (`wash-peach`, `wash-pink`, `wash-lavender`, `wash-blue`): radial gradients only, bleeding down from the top of a window at 40 to 50% opacity, behind the hero window at about 55%, and at full strength across the closing field.
 
 ### Tertiary
@@ -170,6 +199,8 @@ A restrained warm-neutral system with one working accent and a four-colour wash 
 - **Paper tints** (`paper`, `paper-2`, `paper-3`, `track`): sunken rows, chip grounds, question bubbles, segmented-control tracks.
 - **Ink ramp** (`ink` to `ink-5`): headings and primary text, long answers, secondary text, meta text (the lightest tone allowed for text), and `ink-5` for empty checkboxes and dashed outlines only.
 - **Hairlines**: ink at 6%, 8%, 12% and 20% alpha for dividers, card borders, control borders and dashed empty states.
+
+- **Fixed utility tones**: `ink-hover` (primary button hover), `on-ink-muted` (secondary text on the ink tier), `selection` (text selection), `callout-bg` with `callout-ink` (the "needs review" callout), `closing-base` and `wash-apricot` (the closing field).
 
 ### Named Rules
 **The One Blue Rule.** Blue means cited or active. If an element is neither, it is not blue.
@@ -191,6 +222,7 @@ A restrained warm-neutral system with one working accent and a four-colour wash 
 - **Lede** (400, clamp 17 to 19.5px, 1.6): the sentence under a headline, `ink-3`, 34 to 38em wide.
 - **Body** (400, 16px, 1.6): FAQ answers at 16.5px/1.7 with a 68ch measure.
 - **Label** (700, 11 to 13.5px): chips, meta, card keys, section labels inside product views. Numbers use tabular figures.
+- **Product UI tier** (`ui-body`, `ui-row`, `ui-meta`): the product illustrations mirror AgOS's own dense scale (11 to 15px, the app's `--t-*` roles), so sizes between the page roles are expected inside a product view and nowhere else.
 
 ### Named Rules
 **The Tight Display Rule.** Poppins at display sizes tracks between -0.035em and -0.04em, never tighter.
@@ -251,6 +283,15 @@ Every control is a pill. Containers round in proportion to their size: 5px tags,
 - **Style:** a floating white pill, sticky 12px from the top, 62px tall, max 920px wide. Links are 14.5px bold `ink-3` pills that fill with `paper-2` on hover.
 - **Product menu:** a 590px white window listing the five places, the first spanning both columns; opens on click, closes on Escape or an outside click.
 - **Mobile:** links collapse into a sheet under the bar; Create account stays in the bar.
+
+### Plan Tier (signature)
+A plan is a white window with the wash at its top: name, one line of purpose, a price band between two hairlines, a list of check-marked inclusions and one full-width button. Enterprise is the only ink window on the page, with `on-ink-muted` secondary text and peach checks. A price that is not public reads "Price shown at checkout" in bold body type rather than a display number.
+
+### Comparison Table
+One white frame, 28px radius. Group rows sit on `paper` in 13px bold `ink-4`; values are 800 weight with tabular figures; included is a `moss-dot` check, not included is an `ink-5` dash, each with screen-reader text. The header row sticks under the nav on wide screens; under 760px the frame scrolls sideways with the label column pinned.
+
+### Usage Meter
+A window listing the bundled model's three windows (5 hours, 7 days, month) as "used of cap" with tabular figures over 8px tracks filled with the mark gradient, closed by a moss row for workspaces on their own key.
 
 ### Ask Window (signature)
 The hero demo: a white window with the wash bleeding from its top, a thread (question bubble, run steps that collapse to one line, the streamed answer with citation chips, an Answered from list), a Try row of chips and the composer. The documents it cited lift, gain a blue ring and a numbered badge.

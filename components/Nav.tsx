@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { SIGN_IN, SIGN_UP } from '@/lib/links';
 import {
@@ -7,25 +9,26 @@ import {
 } from './icons';
 
 // The five places, in the product rail's order, with the rail's own descriptions
-// (ai-brain/packages/agos-shell/src/nav.ts). Each links to where the page shows it.
+// (ai-brain/packages/agos-shell/src/nav.ts). Each links to where the home page shows it.
 const PLACES = [
-  { href: '#ask', label: 'Ask AgOS', desc: 'Answers written only from pages AgOS can cite', Icon: IconAsk },
-  { href: '#agents', label: 'Agents', desc: 'Orchestrator, workers, skills and the approval queue', Icon: IconAgents },
-  { href: '#knowledge', label: 'Knowledge', desc: 'Spaces, pages and everything AgOS can cite', Icon: IconKnowledge },
-  { href: '#workspaces', label: 'Workspaces', desc: 'Boards, issues and delivery', Icon: IconWorkspaces },
-  { href: '#people', label: 'People', desc: 'Directory, onboarding, org chart and checklists', Icon: IconPeople },
+  { href: '/#ask', label: 'Ask AgOS', desc: 'Answers written only from pages AgOS can cite', Icon: IconAsk },
+  { href: '/#agents', label: 'Agents', desc: 'Orchestrator, workers, skills and the approval queue', Icon: IconAgents },
+  { href: '/#knowledge', label: 'Knowledge', desc: 'Spaces, pages and everything AgOS can cite', Icon: IconKnowledge },
+  { href: '/#workspaces', label: 'Workspaces', desc: 'Boards, issues and delivery', Icon: IconWorkspaces },
+  { href: '/#people', label: 'People', desc: 'Directory, onboarding, org chart and checklists', Icon: IconPeople },
 ];
 
 const LINKS = [
-  { href: '#how-it-works', label: 'How it works' },
-  { href: '#deploy', label: 'Deploy' },
-  { href: '#faq', label: 'FAQ' },
+  { href: '/#how-it-works', label: 'How it works' },
+  { href: '/pricing', label: 'Pricing' },
+  { href: '/#faq', label: 'FAQ' },
 ];
 
 export function Nav() {
   const [menu, setMenu] = useState(false);
   const [sheet, setSheet] = useState(false);
   const root = useRef<HTMLElement>(null);
+  const path = usePathname();
   const close = () => { setMenu(false); setSheet(false); };
 
   useEffect(() => {
@@ -43,10 +46,10 @@ export function Nav() {
   return (
     <header className="nav" ref={root}>
       <nav className="nav-bar" aria-label="Main">
-        <a className="brand" href="#top" onClick={close}>
+        <Link className="brand" href="/" onClick={close}>
           <img src="/agos-mark.png" width={30} height={30} alt="" />
           AgOS
-        </a>
+        </Link>
 
         <div className="nav-links">
           <div className="nav-drop">
@@ -61,14 +64,16 @@ export function Nav() {
             </button>
             <div id="product-menu" className="menu" data-open={menu}>
               {PLACES.map(({ href, label, desc, Icon }) => (
-                <a key={href} className="menu-item" href={href} onClick={close}>
+                <Link key={href} className="menu-item" href={href} onClick={close}>
                   <span className="menu-icon"><Icon /></span>
                   <span><b>{label}</b><span>{desc}</span></span>
-                </a>
+                </Link>
               ))}
             </div>
           </div>
-          {LINKS.map((l) => <a key={l.href} className="nav-link" href={l.href}>{l.label}</a>)}
+          {LINKS.map((l) => (
+            <Link key={l.href} className="nav-link" href={l.href} aria-current={path === l.href ? 'page' : undefined}>{l.label}</Link>
+          ))}
         </div>
 
         <div className="nav-actions">
@@ -89,10 +94,12 @@ export function Nav() {
 
       <div id="nav-sheet" className="sheet" data-open={sheet}>
         {PLACES.map(({ href, label, Icon }) => (
-          <a key={href} href={href} onClick={close}><Icon /> {label}</a>
+          <Link key={href} href={href} onClick={close}><Icon /> {label}</Link>
         ))}
         <hr />
-        {LINKS.map((l) => <a key={l.href} href={l.href} onClick={close}>{l.label}</a>)}
+        {LINKS.map((l) => (
+          <Link key={l.href} href={l.href} onClick={close} aria-current={path === l.href ? 'page' : undefined}>{l.label}</Link>
+        ))}
         <a href={SIGN_IN}>Sign in</a>
       </div>
     </header>

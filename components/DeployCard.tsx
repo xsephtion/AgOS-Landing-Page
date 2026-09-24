@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import { CONTACT, SIGN_UP } from '@/lib/links';
 import {
@@ -45,13 +46,13 @@ const PLANS: Plan[] = [
     title: 'Isolated Cloud',
     line: 'For organizations whose data has to live in a database of their own.',
     big: 'Your database',
-    bigLine: 'Provisioned with you by our team',
+    bigLine: 'Comes with the Enterprise plan',
     rows: [
       [<IconSources key="i" />, 'Data', 'Your own database, not shared with anyone'],
       [<IconWorkspaces key="i" />, 'Hostnames', 'One per app, on your own domain'],
       [<IconKey key="i" />, 'Models', 'Your own keys, with no monthly cap'],
       [<IconConnected key="i" />, 'Tools', 'Local and remote MCP servers'],
-      [<IconPeople key="i" />, 'Setup', 'Provisioned by the Zentarai team'],
+      [<IconPeople key="i" />, 'Setup', 'Provisioned by the AgOS team'],
       [<IconCode key="i" />, 'Code', 'The same code and migrations as Cloud'],
     ],
     note: 'Tell us about your organization and we will set it up with you.',
@@ -131,7 +132,10 @@ export function DeployCard() {
 
         <div className="plan-foot">
           <p>{plan.note}</p>
-          <a className="btn btn-ink" href={plan.cta.href}>{plan.cta.label} <IconArrow size={16} className="arrow" /></a>
+          <span className="plan-actions">
+            <Link className="plan-link" href="/pricing">Compare plans</Link>
+            <a className="btn btn-ink" href={plan.cta.href}>{plan.cta.label} <IconArrow size={16} className="arrow" /></a>
+          </span>
         </div>
       </div>
     </div>

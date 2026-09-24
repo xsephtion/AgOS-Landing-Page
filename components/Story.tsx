@@ -184,6 +184,13 @@ const STEPS: { id: string; title: string; body: string; alt: string; view: React
     view: <App place="ask" title="Ask AgOS" tools={<span className="app-meta">Northbay</span>}>{AskView}</App>,
   },
   {
+    id: 'approvals',
+    title: 'Nothing leaves without a yes.',
+    body: 'Agents draft the email, book the meeting or call a connected tool. Those actions can wait in Approvals, showing what AgOS will do and why, until a person approves or declines. Each one is recorded with who did it and when.',
+    alt: 'The Approvals queue showing an email AgOS drafted, with Approve and Decline buttons.',
+    view: <App place="agents" title="Agents" tools={<Tabs items={['Agents', 'Skills', 'Approvals']} on="Approvals" />}>{ApprovalsView}</App>,
+  },
+  {
     id: 'knowledge',
     title: 'Everything it answers from, in one place.',
     body: 'Knowledge keeps the documents your team relies on in spaces: contracts, scopes of work, onboarding guides, decks. Long documents are split into sections, so an answer points at the exact passage instead of the whole file.',
@@ -204,13 +211,6 @@ const STEPS: { id: string; title: string; body: string; alt: string; view: React
     alt: 'A new hire’s week-one onboarding checklist, with an answer naming their manager.',
     view: <App place="people" title="People" tools={<Tabs items={['Directory', 'Onboarding', 'Org chart']} on="Onboarding" />}>{PeopleView}</App>,
   },
-  {
-    id: 'approvals',
-    title: 'Nothing leaves without a yes.',
-    body: 'Agents draft the email, book the meeting or call a connected tool. Those actions can wait in Approvals, showing what AgOS will do and why, until a person approves or declines. Each one is recorded with who did it and when.',
-    alt: 'The Approvals queue showing an email AgOS drafted, with Approve and Decline buttons.',
-    view: <App place="agents" title="Agents" tools={<Tabs items={['Agents', 'Skills', 'Approvals']} on="Approvals" />}>{ApprovalsView}</App>,
-  },
 ];
 
 export function Story() {
@@ -220,7 +220,7 @@ export function Story() {
         <div className="story-head">
           <h2 id="story-title">From a question to a yes.</h2>
           <p className="lede">
-            Ask, Knowledge, Workspaces, People and Agents are one product, so a question in one
+            Ask, Agents, Knowledge, Workspaces and People are one product, so a question in one
             can draw on all the others.
           </p>
         </div>
