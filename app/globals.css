@@ -148,7 +148,7 @@ p, li { text-wrap: pretty; }
 .seg .on { background: var(--win); color: var(--ink); box-shadow: 0 1px 2px rgba(28, 25, 20, .1); }
 
 /* The product's colour wash, bleeding down from the top of a window. */
-.ask::before, .app-win::before, .plan::before, .tier::before, .meter::before {
+.ask::before, .app-win::before, .plan::before, .tier::before, .meter::before, .inv-win::before {
   content: ""; position: absolute; inset: 0 0 auto; height: 150px; pointer-events: none;
   background: var(--wash); opacity: .5;
   -webkit-mask-image: linear-gradient(#000, transparent); mask-image: linear-gradient(#000, transparent);
@@ -157,7 +157,7 @@ p, li { text-wrap: pretty; }
 .plan::before { height: 190px; opacity: .45; }
 .tier::before { height: 170px; opacity: .45; }
 .tier-dark::before { opacity: .2; }
-.meter::before { height: 120px; opacity: .4; }
+.meter::before, .inv-win::before { height: 120px; opacity: .4; }
 
 /* ── announcement + nav ───────────────────────────────────────────────────── */
 
@@ -702,7 +702,7 @@ p, li { text-wrap: pretty; }
   background: var(--win); box-shadow: 0 1px 2px rgba(28, 25, 20, .06), 0 24px 50px -24px rgba(120, 110, 200, .7);
 }
 .closing h2 { max-width: 14em; font-size: clamp(38px, 5vw, 68px); }
-.closing .lede { margin-top: 18px; color: var(--ink-2); }
+.closing .lede { max-width: 42em; margin-top: 18px; color: var(--ink-2); }
 .closing .hero-actions { margin-top: 32px; }
 
 /* ── footer ───────────────────────────────────────────────────────────────── */
@@ -804,8 +804,8 @@ p, li { text-wrap: pretty; }
 .keys { padding-top: var(--section); }
 .keys-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
 .keys .lede { max-width: 32em; margin-top: 20px; }
-.meter { position: relative; overflow: hidden; background: var(--win); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow-float); }
-.meter-head { position: relative; display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid var(--line-soft); font-size: 14px; }
+.meter, .inv-win { position: relative; overflow: hidden; background: var(--win); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow-float); }
+.meter-head, .inv-head { position: relative; display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid var(--line-soft); font-size: 14px; }
 .meter-body { position: relative; display: grid; gap: 18px; padding: 22px 20px 20px; }
 .meter-row { display: grid; gap: 8px; }
 .meter-row p { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; }
@@ -832,6 +832,52 @@ p, li { text-wrap: pretty; }
 .compare td svg { margin-inline: auto; }
 .compare .yes { color: var(--moss-dot); }
 .compare .no { color: var(--ink-5); }
+
+/* ── investors page ───────────────────────────────────────────────────────── */
+
+.inv-sec { padding-top: var(--section); }
+.inv-stack > * + * { margin-top: 20px; }
+.inv-note { max-width: 44em; margin: 22px auto 0; text-align: center; font-size: 15px; line-height: 1.6; color: var(--ink-3); }
+.inv-body { position: relative; padding: 4px 22px; }
+/* Label and text rows; subgrid lines every label column up with the widest label. */
+.inv-rows { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: 20px; }
+.inv-rows li {
+  display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; align-items: baseline;
+  padding: 14px 0; border-top: 1px solid var(--line-soft); font-size: 15px; line-height: 1.55; color: var(--ink-2);
+}
+.inv-rows li:first-child { border-top: 0; }
+.inv-rows b { font-size: 14px; color: var(--ink); }
+.inv-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: clamp(40px, 5vw, 60px); }
+.inv-card { display: grid; gap: 12px; padding: 24px; background: var(--win); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow-win); }
+.inv-card h3 { font-size: 22px; line-height: 1.2; letter-spacing: -.025em; }
+.inv-card p { display: grid; gap: 6px; font-size: 15px; line-height: 1.55; color: var(--ink-2); }
+
+/* The loop and the autonomy dial: steps as pills, the two that carry the business in ink. */
+.loop { max-width: 980px; margin: clamp(40px, 5vw, 60px) auto 0; }
+.loop-row { position: relative; display: grid; gap: 12px; padding: 22px 24px; }
+.loop-row + .loop-row { border-top: 1px solid var(--line-soft); }
+.loop-label { font-size: 13px; font-weight: 800; color: var(--ink-4); }
+.steps { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 8px; }
+.steps li { display: flex; align-items: center; gap: 8px; }
+.steps svg { color: var(--ink-4); }
+.steps span {
+  padding: 7px 13px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper);
+  font-size: 14px; font-weight: 700; line-height: 1.4; color: var(--ink-2);
+}
+.steps .key { background: var(--ink); border-color: var(--ink); color: #fff; }
+.steps .end { background: var(--brick-bg); border-color: transparent; color: var(--brick); }
+
+/* The comparison reuses the pricing table; its cells are sentences, not ticks. */
+.inv-vs thead th { text-align: left; }
+.inv-vs thead th:first-child { width: 22%; }
+.inv-vs tbody tr:first-child > * { border-top: 0; }
+.inv-vs td { font-weight: 600; line-height: 1.5; text-align: left; }
+.inv-vs td:first-of-type { font-weight: 700; color: var(--ink); }
+
+.inv-raise { font: 600 clamp(48px, 6vw, 84px)/1 var(--display); letter-spacing: -.04em; }
+.inv-checks { display: grid; gap: 10px; margin-top: 12px; }
+.inv-checks li { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+.inv-checks svg { color: var(--moss-dot); }
 
 /* ── responsive ───────────────────────────────────────────────────────────── */
 
@@ -941,6 +987,17 @@ p, li { text-wrap: pretty; }
 @media (max-width: 899px) {
   .legal-grid { grid-template-columns: minmax(0, 1fr); }
   .legal-toc { display: none; }
+}
+
+@media (max-width: 899px) {
+  .inv-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .inv-rows { grid-template-columns: minmax(0, 1fr); }
+  .inv-rows li { row-gap: 2px; }
+  .inv-body { padding-inline: 16px; }
+  .loop-row { padding: 18px 16px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

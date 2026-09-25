@@ -19,6 +19,7 @@ npm run build && npm start
 | `app/pricing/page.tsx` | Pricing: plans, bundled-model allowances, comparison, pricing FAQ |
 | `app/privacy/page.tsx` | Privacy policy |
 | `app/data/page.tsx` | Data we collect and how AgOS uses it (part of the privacy policy) |
+| `app/investors/page.tsx` | Investors: a summary of the pitch deck (`PITCH_DECK` in `lib/links.ts`). Not linked from the site, `noindex`; share the URL |
 | `components/Legal.tsx` | Layout shared by the two legal pages |
 | `components/AskDemo.tsx` | Hero demo: sample questions, answers, cited documents |
 | `components/Agents.tsx` | Agents and skills ticker |

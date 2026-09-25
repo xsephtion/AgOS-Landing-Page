@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { ReactNode } from 'react';
 import { CONTACT, SIGN_IN, SIGN_UP } from '@/lib/links';
 import { IconArrow } from './icons';
 
@@ -14,15 +15,20 @@ export function Announcement() {
   );
 }
 
-export function Closing({ title, lede }: { title: string; lede: string }) {
+// `actions` replaces the sign-up pair on pages whose reader is not signing up (investors).
+export function Closing({ title, lede, actions }: { title: string; lede: string; actions?: ReactNode }) {
   return (
     <section className="closing" aria-labelledby="closing-title">
       <span className="closing-mark"><img src="/agos-mark.png" width={64} height={64} alt="" /></span>
       <h2 id="closing-title">{title}</h2>
       <p className="lede">{lede}</p>
       <p className="hero-actions">
-        <a className="btn btn-ink" href={SIGN_UP}>Create your account <IconArrow size={16} className="arrow" /></a>
-        <a className="btn btn-line" href={CONTACT}>Talk to us</a>
+        {actions ?? (
+          <>
+            <a className="btn btn-ink" href={SIGN_UP}>Create your account <IconArrow size={16} className="arrow" /></a>
+            <a className="btn btn-line" href={CONTACT}>Talk to us</a>
+          </>
+        )}
       </p>
     </section>
   );
