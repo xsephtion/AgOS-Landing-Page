@@ -176,6 +176,17 @@ The one authored motion is the hero: a question types itself, AgOS works through
 - Depth from hairline plus long soft shadow; no glass, no blur.
 - Product illustrations drawn in HTML with sample data, always labeled.
 
+## Direction
+
+The brief the page was built to. It used to ship in every page's HTML as a comment; it lives here instead, so it is kept without being published.
+
+- THESIS: The page is the product answering. A question goes in, a cited answer comes out, and the documents it came from light up. Refuses the gradient-blob hero with a screenshot and a logo wall.
+- OWN-WORLD: AgOS warm paper desk (#EDEBE7), white windows floating on it, hairlines, long soft shadows, the peach-pink-lavender-blue wash bleeding from window tops. Ink pill buttons. Poppins display, Manrope for the rest. Blue only where something is cited or active.
+- STORY: See a cited answer, meet the agents, walk the five places in the product rail's order (Ask, Agents with Approvals, Knowledge, Workspaces, People; owner, 2026-09-24), learn sign-up takes a few documents, pick Cloud or Isolated Cloud, create an account.
+- FIRST VIEWPORT: Floating pill nav. Centered two-line headline, lede, Create your account plus How it works. Below, the Ask window on the desk with sample documents around it.
+- FORM: Pinned by the brief (AgOS palette, reference page flow); no roll. Key: pinned-agos-desk.
+- FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+
 ## Colors
 
 A restrained warm-neutral system with one working accent and a four-colour wash kept for atmosphere.
