@@ -31,6 +31,9 @@ npm run build && npm start
 | `lib/seo.ts` | Home title and description, and `pageMetadata`, which every page uses for its canonical URL and share card |
 | `app/sitemap.ts`, `app/robots.ts` | `/sitemap.xml` and `/robots.txt`. Add new pages to the sitemap's list |
 | `app/opengraph-image.tsx` | The share card for every page, drawn at build time |
+| `app/blog/feed.xml/route.ts` | `/blog/feed.xml`, the blog as RSS, built from `lib/content/blog.ts` |
+| `app/not-found.tsx` | The 404 page, with links back to the main pages |
+| `app/icon.png` | The favicon. Keep it a multiple of 48px square, or Google may not show it in results |
 | `components/JsonLd.tsx` | Structured data for search engines. `Faq` emits FAQPage data from its own questions |
 | `lib/content/*.ts` | Copy for the content pages: product areas, integrations, use cases, comparisons, security, docs and blog. `index.ts` lists the collections |
 | `app/{product,integrations,use-cases,compare,docs,blog}/` | Routes for those pages, built from `lib/content` by `components/routes.tsx`; `app/security` is a single page |

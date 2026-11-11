@@ -22,6 +22,9 @@ export const HOME_TITLE = 'AgOS: AI answers from your company’s documents, wit
 export const HOME_DESCRIPTION =
   'AgOS answers questions from the documents your team already writes, with citations. Agents draft, schedule and track the work, and a person approves what leaves.';
 
+// The blog's RSS feed, app/blog/feed.xml/route.ts.
+export const BLOG_FEED = '/blog/feed.xml';
+
 // The card app/opengraph-image.tsx draws.
 export const SHARE_IMAGE = {
   url: '/opengraph-image',
@@ -35,6 +38,7 @@ export const SHARE_IMAGE = {
 // it in one place keeps every page's canonical URL, share card and site name consistent.
 // `title` is left out on the home page so the layout's default applies; elsewhere the layout's
 // template adds "| AgOS". `published` (an ISO date) makes the page an article, for blog posts.
+// Every page names the blog's feed, so a reader or crawler finds it from wherever it lands.
 export function pageMetadata({ path, title, description, published }: {
   path: string;
   title?: string;
@@ -46,7 +50,7 @@ export function pageMetadata({ path, title, description, published }: {
   return {
     ...(title && { title }),
     description,
-    alternates: { canonical: path },
+    alternates: { canonical: path, types: { 'application/rss+xml': [{ url: BLOG_FEED, title: 'The AgOS blog' }] } },
     openGraph: {
       ...kind, siteName: 'AgOS', locale: 'en_US', url: path, title: shareTitle, description, images: [SHARE_IMAGE],
     },
