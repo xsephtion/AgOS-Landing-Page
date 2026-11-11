@@ -1,4 +1,5 @@
 import { Fragment, type ReactNode } from 'react';
+import type { View } from '@/lib/content/types';
 import {
   IconAgents, IconAsk, IconCalendar, IconCheck, IconClock, IconConnected, IconKnowledge,
   IconMail, IconPeople, IconSearch, IconSend, IconWarn, IconWorkspaces,
@@ -212,6 +213,10 @@ const STEPS: { id: string; title: string; body: string; alt: string; view: React
     view: <App place="people" title="People" tools={<Tabs items={['Directory', 'Onboarding', 'Org chart']} on="Onboarding" />}>{PeopleView}</App>,
   },
 ];
+
+// The same views by name, for the product pages (components/Topic.tsx).
+export const VIEWS = Object.fromEntries(STEPS.map((s) => [s.id, { view: s.view, alt: s.alt }])) as
+  Record<View, { view: ReactNode; alt: string }>;
 
 export function Story() {
   return (

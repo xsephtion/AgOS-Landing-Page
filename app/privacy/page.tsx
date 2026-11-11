@@ -1,13 +1,14 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import { LegalPage, type LegalSection } from '@/components/Legal';
 import { CONTACT } from '@/lib/links';
+import { pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: '/privacy',
   title: 'Privacy policy',
   description:
     'What AgOS collects, how it uses it, who else receives it and how long it is kept. It applies to everyone who uses AgOS.',
-};
+});
 
 // Every statement is taken from ai-brain, not from general practice:
 // supabase/migrations (users, auth_identities, query_log, kb_chat_feedback, learning_signals,
@@ -288,9 +289,17 @@ const SECTIONS: LegalSection[] = [
     body: (
       <>
         <p>
-          This website sets no cookies, runs no analytics or advertising scripts, and serves its own
-          fonts. The question box on the home page is a demo: it answers from sample data in your
-          browser and sends nothing.
+          This website runs no advertising scripts and serves its own fonts. The question box on
+          the home page is a demo: it answers from sample data in your browser and sends nothing.
+        </p>
+        <p>
+          It uses <b>Google Analytics</b> to count visits and see which pages people read and which
+          links they follow, only if you accept it in the banner. Until you do, no analytics script
+          loads and no cookie is set. If you accept, Google sets cookies (named <code>_ga</code> and
+          {' '}<code>_ga_</code> followed by an ID) that last up to 2 years, and receives your IP address,
+          browser details and the pages you visit. Google signals and ad personalization are off.
+          Your choice is remembered in your browser, and you can change it with Cookie settings at
+          the bottom of any page.
         </p>
         <p>The AgOS apps use cookies only to sign you in:</p>
         <ul>
@@ -335,7 +344,7 @@ export default function Privacy() {
     <LegalPage
       title="Privacy policy"
       lede="What AgOS collects, what it does with it, who else receives it and how long it is kept."
-      updated={{ iso: '2026-09-24', label: 'September 24, 2026' }}
+      updated={{ iso: '2026-11-10', label: 'November 10, 2026' }}
       sections={SECTIONS}
     />
   );

@@ -4,9 +4,32 @@ import { Closing } from '@/components/Chrome';
 import { DeployCard } from '@/components/DeployCard';
 import { Faq } from '@/components/Faq';
 import { IconArrow } from '@/components/icons';
+import { JsonLd } from '@/components/JsonLd';
 import { Onboarding } from '@/components/Onboarding';
 import { Story } from '@/components/Story';
-import { SIGN_UP } from '@/lib/links';
+import { SIGN_UP, SITE_URL } from '@/lib/links';
+import { HOME_DESCRIPTION, ORGANIZATION, ORGANIZATION_REF, pageMetadata } from '@/lib/seo';
+
+export const metadata = pageMetadata({ path: '/', description: HOME_DESCRIPTION });
+
+// Who makes AgOS, the site, and the product itself. No offers or ratings: prices are not
+// public and there are no reviews (PRODUCT.md, Evidence on Hand).
+const SITE_DATA = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    ORGANIZATION,
+    { '@type': 'WebSite', '@id': `${SITE_URL}/#website`, name: 'AgOS', url: SITE_URL, publisher: ORGANIZATION_REF },
+    {
+      '@type': 'SoftwareApplication',
+      name: 'AgOS',
+      url: SITE_URL,
+      description: HOME_DESCRIPTION,
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web',
+      publisher: ORGANIZATION_REF,
+    },
+  ],
+};
 
 // Every answer below is taken from the product: rag.ts (never invent), seedIndex.ts (file
 // types and caps), onboarding/screens.ts (who can join), DEPLOYMENT_MODES.md, MULTI_TENANCY.md
@@ -37,6 +60,7 @@ const FAQ: [string, string][] = [
 export default function Page() {
   return (
     <main id="main">
+      <JsonLd data={SITE_DATA} />
       <section className="hero" aria-labelledby="hero-title">
         <div className="wrap">
           <h1 id="hero-title">Ask your company a question <br />and get an answer.</h1>

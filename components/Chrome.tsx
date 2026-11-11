@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { CONTACT, SIGN_IN, SIGN_UP } from '@/lib/links';
+import { CookieSettingsButton } from './Analytics';
 import { IconArrow } from './icons';
 
 // Site-wide pieces: the announcement above the nav, the closing call to action and the footer.
@@ -45,17 +46,26 @@ export function Footer() {
       <nav className="footer-cols" aria-label="Footer">
         <div>
           <h2>Product</h2>
-          <Link href="/#ask">Ask AgOS</Link>
-          <Link href="/#agents">Agents</Link>
-          <Link href="/#knowledge">Knowledge</Link>
-          <Link href="/#workspaces">Workspaces</Link>
-          <Link href="/#people">People</Link>
+          <Link href="/product/ask">Ask AgOS</Link>
+          <Link href="/product/agents">Agents</Link>
+          <Link href="/product/knowledge">Knowledge</Link>
+          <Link href="/product/workspaces">Workspaces</Link>
+          <Link href="/product/people">People</Link>
+          <Link href="/security">Security</Link>
         </div>
         <div>
           <h2>Explore</h2>
           <Link href="/#how-it-works">How it works</Link>
-          <Link href="/#start">Getting started</Link>
+          <Link href="/integrations">Integrations</Link>
+          <Link href="/use-cases">Use cases</Link>
+          <Link href="/compare">Compare</Link>
           <Link href="/pricing">Pricing</Link>
+        </div>
+        <div>
+          <h2>Resources</h2>
+          <Link href="/docs">Help center</Link>
+          <Link href="/docs/getting-started">Getting started</Link>
+          <Link href="/blog">Blog</Link>
           <Link href="/#faq">FAQ</Link>
         </div>
         <div>
@@ -71,6 +81,7 @@ export function Footer() {
           <Link href="/privacy">Privacy policy</Link>
           <Link href="/data#collect">Data we collect</Link>
           <Link href="/data#use">How we use data</Link>
+          <CookieSettingsButton />
         </nav>
         <span>Product views on this site are illustrations with sample data.</span>
       </div>
