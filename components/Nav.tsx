@@ -9,20 +9,24 @@ import {
 } from './icons';
 
 // The five places, in the product rail's order, with the rail's own descriptions
-// (ai-brain/packages/agos-shell/src/nav.ts). Each links to where the home page shows it.
+// (ai-brain/packages/agos-shell/src/nav.ts). Each links to its own page under /product.
 const PLACES = [
-  { href: '/#ask', label: 'Ask AgOS', desc: 'Answers written only from pages AgOS can cite', Icon: IconAsk },
-  { href: '/#agents', label: 'Agents', desc: 'Orchestrator, workers, skills and the approval queue', Icon: IconAgents },
-  { href: '/#knowledge', label: 'Knowledge', desc: 'Spaces, pages and everything AgOS can cite', Icon: IconKnowledge },
-  { href: '/#workspaces', label: 'Workspaces', desc: 'Boards, issues and delivery', Icon: IconWorkspaces },
-  { href: '/#people', label: 'People', desc: 'Directory, onboarding, org chart and checklists', Icon: IconPeople },
+  { href: '/product/ask', label: 'Ask AgOS', desc: 'Answers written only from pages AgOS can cite', Icon: IconAsk },
+  { href: '/product/agents', label: 'Agents', desc: 'Orchestrator, workers, skills and the approval queue', Icon: IconAgents },
+  { href: '/product/knowledge', label: 'Knowledge', desc: 'Spaces, pages and everything AgOS can cite', Icon: IconKnowledge },
+  { href: '/product/workspaces', label: 'Workspaces', desc: 'Boards, issues and delivery', Icon: IconWorkspaces },
+  { href: '/product/people', label: 'People', desc: 'Directory, onboarding, org chart and checklists', Icon: IconPeople },
 ];
 
 const LINKS = [
   { href: '/#how-it-works', label: 'How it works' },
+  { href: '/integrations', label: 'Integrations' },
   { href: '/pricing', label: 'Pricing' },
-  { href: '/#faq', label: 'FAQ' },
+  { href: '/docs', label: 'Docs' },
 ];
+
+// A section link stays current on the pages beneath it (/docs on /docs/approvals).
+const isCurrent = (path: string, href: string) => path === href || path.startsWith(`${href}/`);
 
 export function Nav() {
   const [menu, setMenu] = useState(false);
@@ -72,7 +76,7 @@ export function Nav() {
             </div>
           </div>
           {LINKS.map((l) => (
-            <Link key={l.href} className="nav-link" href={l.href} aria-current={path === l.href ? 'page' : undefined}>{l.label}</Link>
+            <Link key={l.href} className="nav-link" href={l.href} aria-current={isCurrent(path, l.href) ? 'page' : undefined}>{l.label}</Link>
           ))}
         </div>
 
@@ -98,7 +102,7 @@ export function Nav() {
         ))}
         <hr />
         {LINKS.map((l) => (
-          <Link key={l.href} href={l.href} onClick={close} aria-current={path === l.href ? 'page' : undefined}>{l.label}</Link>
+          <Link key={l.href} href={l.href} onClick={close} aria-current={isCurrent(path, l.href) ? 'page' : undefined}>{l.label}</Link>
         ))}
         <a href={SIGN_IN}>Sign in</a>
       </div>

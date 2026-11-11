@@ -1,13 +1,14 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Fragment, type ReactNode } from 'react';
 import { LegalPage, type LegalPart, type LegalSection } from '@/components/Legal';
+import { pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: '/data',
   title: 'Data we collect and how we use it',
   description:
     'Everything AgOS collects, where it comes from and what it is used for, taken from how the product works.',
-};
+});
 
 // Taken from ai-brain, same sources as app/privacy/page.tsx, plus: onboarding/screens.ts and
 // seedIndex.ts (file types), memory/kb/queryLog.ts (question log, "safe to show" pass, gap
@@ -111,7 +112,9 @@ const COLLECT: (LegalPart & { items: [string, ReactNode][] })[] = [
     title: 'Cookies',
     items: [
       ['Sign-in cookies.',
-        <>The AgOS apps use cookies only to sign you in, and this website sets none. The details are in <Link href="/privacy#cookies">Cookies and this website</Link>.</>],
+        <>The AgOS apps use cookies only to sign you in. The details are in <Link href="/privacy#cookies">Cookies and this website</Link>.</>],
+      ['Website analytics.',
+        <>Only if you accept: Google Analytics cookies on this website, used to count visits and see which pages and links people use. See <Link href="/privacy#cookies">Cookies and this website</Link>.</>],
     ],
   },
 ];
@@ -256,7 +259,7 @@ export default function DataUse() {
     <LegalPage
       title="Data we collect and how we use it"
       lede="Everything AgOS collects, where it comes from and what it is used for, taken from how the product works. This page is part of our privacy policy."
-      updated={{ iso: '2026-09-24', label: 'September 24, 2026' }}
+      updated={{ iso: '2026-11-10', label: 'November 10, 2026' }}
       sections={SECTIONS}
     />
   );

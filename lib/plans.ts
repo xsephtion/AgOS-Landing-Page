@@ -7,6 +7,9 @@ import { CONTACT, SIGN_UP } from './links';
 // here, e.g. price: '$29', note: 'per month'. The Stripe code in ai-brain is not in use and
 // Dodo Payments is planned (owner, 2026-09-24): name no processor until one is live.
 // Trial length (14 days) confirmed by the owner, 2026-09-23.
+// No token counts on the site (owner, 2026-09-27): the bundled model's caps (200K, 1M, 5M a
+// month in ai-brain) read as an allowance, larger, largest, no cap. If a cap in ai-brain stops
+// growing tier by tier, change the words.
 
 export type Tier = {
   id: 'trial' | 'starter' | 'team' | 'enterprise';
@@ -28,7 +31,7 @@ export const TIERS: Tier[] = [
     highlights: [
       'Research, Drafting and Knowledge answers',
       'Up to 5 people',
-      '200,000 bundled tokens a month',
+      'An allowance on the bundled model',
       'Your own model keys, never metered',
     ],
     cta: { label: 'Start your trial', href: SIGN_UP, style: 'ink' },
@@ -43,7 +46,7 @@ export const TIERS: Tier[] = [
       'Everything in Trial',
       'Task management agent',
       'Up to 10 people',
-      '1,000,000 bundled tokens a month',
+      'A larger allowance on the bundled model',
     ],
     cta: { label: 'Create your account', href: SIGN_UP, style: 'line' },
   },
@@ -58,7 +61,7 @@ export const TIERS: Tier[] = [
       'Connect MCP servers, or expose AgOS as one',
       'Background agents on Workspaces',
       'Up to 50 people',
-      '5,000,000 bundled tokens a month',
+      'The largest allowance on the bundled model',
     ],
     cta: { label: 'Create your account', href: SIGN_UP, style: 'line' },
   },
@@ -108,9 +111,7 @@ export const COMPARE: { group: string; rows: [string, Cell, Cell, Cell, Cell][] 
   {
     group: 'Bundled model, on our keys',
     rows: [
-      ['Tokens a month', '200K', '1M', '5M', 'No cap'],
-      ['Tokens every 7 days', '70K', '350K', '1.75M', 'No cap'],
-      ['Tokens every 5 hours', '20K', '100K', '500K', 'No cap'],
+      ['Allowance (resets every 5 hours, 7 days and month)', 'Included', 'Larger', 'Largest', 'No cap'],
     ],
   },
   {

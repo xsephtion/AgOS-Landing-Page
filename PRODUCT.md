@@ -40,12 +40,12 @@ Success for this page: a visitor understands that AgOS answers from their own do
 - Language models: Anthropic, OpenAI, Ollama. Embeddings: Voyage, OpenAI, Hugging Face. Data: Postgres with pgvector (Supabase). Sign-in: Google, GitHub, Zentarai identity.
 - Cloud (pool): self-serve sign-up, shared database with every row scoped to the organization by row-level security, bundled AI keys with a monthly cap, remote MCP tools only.
 - Isolated Cloud (silo): provisioned by Zentarai staff, the customer's own database, own hostnames, bring-your-own AI keys with no monthly cap, local (stdio) MCP servers available.
-- Plans (ai-brain/src/platform/plans.ts, mirrored in `lib/plans.ts`): Trial, Starter, Team, Enterprise. Flat price per tier, not per token; a workspace's own model key is never metered. Bundled model caps per month: 200K, 1M, 5M tokens, none on Enterprise, plus 5-hour and 7-day windows. Seats (5, 10, 50, none) are guidance and never block an invite. MCP and background agents start at Team; Isolated Cloud is Enterprise only.
+- Plans (ai-brain/src/platform/plans.ts, mirrored in `lib/plans.ts`): Trial, Starter, Team, Enterprise. Flat price per tier, not per token; a workspace's own model key is never metered. Bundled model caps per month: 200K, 1M, 5M tokens, none on Enterprise, plus 5-hour and 7-day windows. The site shows no token counts (owner, 2026-09-27): tiers say an allowance, a larger one, the largest one and no cap. Seats (5, 10, 50, none) are guidance and never block an invite. MCP and background agents start at Team; Isolated Cloud is Enterprise only.
 - Trial length: 14 days (owner, 2026-09-23). Sign-up asks for no card.
 - Price amounts are not public. Paid tiers show "Price shown at checkout" and Enterprise shows "Talk to us" (owner's decision, 2026-09-23). Do not show numbers until the owner supplies them.
 - Payments: ai-brain has Stripe code, but Stripe is not in use; Dodo Payments is planned (owner, 2026-09-24). The site names no payment processor until one is live.
 - Data policy (owner, 2026-09-24), published at `/privacy` and `/data`: anyone who uses AgOS is subject to it; collected data is used to train and improve AgOS; data may be sold to third-party vendors and is anonymized before any sale. ai-brain has no anonymization step yet, so none may be sold until one exists.
-- Links (domain confirmed by user 2026-09-23, paths taken from the ai-brain routes): sign-up `https://agos.digital/signup/start`, sign-in `https://agos.digital/login`, contact `support@agos.digital`. All defined once in `lib/links.ts`.
+- Links (domain confirmed by user 2026-09-23, paths taken from the ai-brain routes): sign-up `https://agos.digital/signup/start`, sign-in `https://agos.digital/login`, contact `support@agos.digital`. All defined once in `lib/links.ts`. This site itself is served at `https://agos.digital` (owner, 2026-11-10), the `SITE_URL` that canonical URLs, the sitemap and share cards use.
 
 ## Brand Commitments
 

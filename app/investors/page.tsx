@@ -2,11 +2,15 @@ import type { Metadata } from 'next';
 import { Closing } from '@/components/Chrome';
 import { IconActivity, IconArrow, IconCalendar, IconCheck } from '@/components/icons';
 import { PITCH_DECK } from '@/lib/links';
+import { pageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Investors',
-  description:
-    'A summary of the AgOS pitch deck: the problem, how AgOS works, how it makes money and the $200,000 raise.',
+  ...pageMetadata({
+    path: '/investors',
+    title: 'Investors',
+    description:
+      'A summary of the AgOS pitch deck: the problem, how AgOS works, how it makes money and the $200,000 raise.',
+  }),
   // Shared by link, like the deck it summarizes: nothing on the site links here, and search engines skip it.
   robots: { index: false },
 };

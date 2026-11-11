@@ -715,7 +715,7 @@ p, li { text-wrap: pretty; }
 .brand-lg { gap: 12px; font-size: 24px; }
 .footer-brand p { max-width: 22em; margin-top: 16px; color: var(--ink-3); }
 .footer-brand .footer-by { margin-top: 8px; font-size: 14px; color: var(--ink-4); }
-.footer-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.footer-cols { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
 .footer-cols h2 { margin-bottom: 12px; font: 800 13.5px/1.3 var(--sans); letter-spacing: 0; }
 .footer-cols a { display: block; width: fit-content; padding: 5px 0; font-size: 15px; color: var(--ink-3); transition: color .15s; }
 .footer-cols a:hover { color: var(--ink); }
@@ -726,6 +726,19 @@ p, li { text-wrap: pretty; }
 .footer-legal { display: flex; flex-wrap: wrap; gap: 4px 20px; }
 .footer-legal a { color: var(--ink-3); transition: color .15s; }
 .footer-legal a:hover { color: var(--ink); }
+.footer-link-btn { padding: 0; border: 0; background: none; font: inherit; color: var(--ink-3); cursor: pointer; transition: color .15s; }
+.footer-link-btn:hover { color: var(--ink); }
+
+/* ── analytics consent ────────────────────────────────────────────────────── */
+
+.consent {
+  position: fixed; z-index: 60; right: 16px; bottom: 16px; left: 16px; margin-left: auto;
+  display: flex; flex-direction: column; gap: 14px; max-width: 400px; padding: 18px 20px;
+  background: var(--win); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow-pop);
+  font-size: 14.5px; line-height: 1.55; color: var(--ink-3);
+}
+.consent a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+.consent-actions { display: flex; justify-content: flex-end; gap: 8px; }
 
 /* ── legal pages (privacy policy, data use) ──────────────────────────────── */
 
@@ -743,17 +756,71 @@ p, li { text-wrap: pretty; }
 .legal-toc a:hover { color: var(--ink); }
 .legal-toc .legal-toc-sub { padding-left: 14px; font-weight: 600; color: var(--ink-4); }
 .legal-body { max-width: 70ch; }
-.legal-body section + section { margin-top: clamp(48px, 5vw, 64px); }
-.legal-body h2 { font-size: clamp(24px, 2.4vw, 30px); line-height: 1.15; letter-spacing: -.025em; }
-.legal-body h3 { margin-top: 32px; font: 800 17px/1.4 var(--sans); letter-spacing: -.01em; }
-.legal-body p, .legal-body li { font-size: 16.5px; line-height: 1.7; color: var(--ink-2); }
-.legal-body p, .legal-body ul { margin-top: 14px; }
-.legal-body h3 + p, .legal-body h3 + ul { margin-top: 8px; }
-.legal-body ul { display: grid; gap: 10px; }
-.legal-body li { position: relative; padding-left: 22px; }
-.legal-body li::before { content: ""; position: absolute; left: 6px; top: .7em; width: 5px; height: 5px; border-radius: 50%; background: var(--ink-4); }
-.legal-body b { color: var(--ink); }
-.legal-body a { font-weight: 700; color: var(--accent-ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+/* Running text, shared by the legal pages and the content pages (components/Topic.tsx). */
+.legal-body section + section, .prose section + section { margin-top: clamp(48px, 5vw, 64px); }
+.legal-body h2, .prose h2 { font-size: clamp(24px, 2.4vw, 30px); line-height: 1.15; letter-spacing: -.025em; }
+.legal-body h3, .prose h3 { margin-top: 32px; font: 800 17px/1.4 var(--sans); letter-spacing: -.01em; }
+.legal-body p, .legal-body li, .prose p, .prose li { font-size: 16.5px; line-height: 1.7; color: var(--ink-2); }
+.legal-body p, .legal-body ul, .prose p, .prose ul { margin-top: 14px; }
+.legal-body h3 + p, .legal-body h3 + ul, .prose h3 + p, .prose h3 + ul { margin-top: 8px; }
+.legal-body ul, .prose ul { display: grid; gap: 10px; }
+.legal-body li, .prose li { position: relative; padding-left: 22px; }
+.legal-body li::before, .prose li::before { content: ""; position: absolute; left: 6px; top: .7em; width: 5px; height: 5px; border-radius: 50%; background: var(--ink-4); }
+.legal-body b, .prose b { color: var(--ink); }
+.legal-body a, .prose a { font-weight: 700; color: var(--accent-ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ── content pages (product, integrations, use cases, compare, security, docs, blog) ── */
+
+.crumbs { padding-top: clamp(32px, 4vw, 48px); }
+.crumbs ol { display: flex; flex-wrap: wrap; gap: 6px; font-size: 13.5px; font-weight: 700; color: var(--ink-4); }
+.crumbs li + li::before { content: "/"; margin-right: 6px; color: var(--ink-5); }
+.crumbs a { color: var(--ink-3); transition: color .15s; }
+.crumbs a:hover { color: var(--ink); }
+.page-head { padding-top: clamp(28px, 3.5vw, 48px); }
+.eyebrow { font-size: 13.5px; font-weight: 800; color: var(--ink-4); }
+.page-head h1 { max-width: 15em; margin-top: 12px; font-size: clamp(40px, 5.4vw, 72px); line-height: 1.03; letter-spacing: -.04em; }
+.page-head .lede { max-width: 38em; margin-top: 22px; }
+.page-head .hero-actions { justify-content: flex-start; }
+.page-head .legal-date { margin-top: 18px; }
+.prose { max-width: 70ch; }
+.topic-figure { margin-top: clamp(48px, 6vw, 80px); }
+.topic-figure figure { max-width: 1000px; }
+.topic-body { margin-top: clamp(56px, 7vw, 96px); }
+.listing { margin-top: clamp(40px, 5vw, 64px); }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.related .cards { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(28px, 3vw, 40px); }
+.related h2 { font-size: clamp(30px, 3.2vw, 44px); }
+.related { padding-top: var(--section); }
+.card {
+  position: relative; display: grid; align-content: start; gap: 8px; padding: 24px 24px 56px;
+  background: var(--win); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow-win);
+  transition: transform .35s var(--ease), border-color .2s, box-shadow .35s var(--ease);
+}
+.card:hover { transform: translateY(-2px); border-color: var(--line-2); box-shadow: var(--shadow-float); }
+.card small { font-size: 12.5px; font-weight: 800; color: var(--ink-4); }
+.card b { font: 600 21px/1.2 var(--display); letter-spacing: -.02em; }
+.card span { font-size: 15px; line-height: 1.55; color: var(--ink-3); }
+.card-arrow { position: absolute; left: 24px; bottom: 22px; color: var(--ink-4); transition: transform .35s var(--ease), color .2s; }
+.card:hover .card-arrow { transform: translateX(3px); color: var(--ink); }
+/* Comparison tables hold sentences, not ticks: left-aligned, regular weight, scrollable when
+   narrow. Doubled class so these win over the pricing table's rules, which come later. */
+.compare.compare-text .compare-wrap { overflow-x: auto; }
+.compare.compare-text table { min-width: 720px; }
+.compare.compare-text thead th { position: static; padding: 18px 20px; text-align: left; }
+.compare.compare-text thead th:first-child { width: 22%; }
+.compare.compare-text tbody th, .compare.compare-text td { padding: 15px 20px; vertical-align: top; }
+.compare.compare-text td { font-weight: 500; line-height: 1.55; text-align: left; }
+.compare.compare-text td a { font-weight: 700; color: var(--accent-ink); text-decoration: underline; text-underline-offset: 3px; }
+.table-note { max-width: 70ch; margin-top: 18px; font-size: 14px; line-height: 1.6; color: var(--ink-3); }
+.table-note a { font-weight: 700; color: var(--accent-ink); text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 1023px) {
+  .cards, .related .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .cards, .related .cards { grid-template-columns: minmax(0, 1fr); }
+  .topic-figure .app { height: 480px; }
+}
 
 /* ── pricing page ───────────────────────────────────────────────────────── */
 
@@ -812,9 +879,6 @@ p, li { text-wrap: pretty; }
 .meter-row p span { font-weight: 600; color: var(--ink-4); font-variant-numeric: tabular-nums; }
 .meter-track { display: block; height: 8px; overflow: hidden; border-radius: 999px; background: var(--paper-3); }
 .meter-fill { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #8FA6FF, #C79BF2); }
-.meter-own { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border-radius: 14px; background: var(--moss-bg); color: var(--moss); font-size: 13.5px; }
-.meter-own span { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; }
-.meter-note { font-size: 12.5px; color: var(--ink-4); }
 
 .compare { padding-top: var(--section); }
 .compare h2 { text-align: center; }

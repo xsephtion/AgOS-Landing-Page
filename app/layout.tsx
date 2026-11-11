@@ -1,8 +1,11 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 import { Manrope, Poppins } from 'next/font/google';
+import { Analytics } from '@/components/Analytics';
 import { Announcement, Footer } from '@/components/Chrome';
 import { Nav } from '@/components/Nav';
+import { SITE_URL } from '@/lib/links';
+import { HOME_DESCRIPTION, HOME_TITLE } from '@/lib/seo';
 import './globals.css';
 
 // AgOS type: Manrope for everything a person reads, Poppins (the wordmark's geometric
@@ -10,10 +13,15 @@ import './globals.css';
 const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope', display: 'swap' });
 const poppins = Poppins({ subsets: ['latin'], weight: ['500', '600'], variable: '--font-poppins', display: 'swap' });
 
+// Pages set their own canonical URL and share card through pageMetadata (lib/seo.ts). What is
+// here covers anything that does not, such as the 404 page.
 export const metadata: Metadata = {
-  title: { default: 'AgOS: ask your company a question and get an answer', template: '%s | AgOS' },
-  description:
-    'AgOS reads the documents your team already writes and answers from them with citations. Agents draft, schedule and track the work, and a person approves what leaves.',
+  metadataBase: new URL(SITE_URL),
+  title: { default: HOME_TITLE, template: '%s | AgOS' },
+  description: HOME_DESCRIPTION,
+  applicationName: 'AgOS',
+  openGraph: { type: 'website', siteName: 'AgOS', locale: 'en_US', title: HOME_TITLE, description: HOME_DESCRIPTION },
+  twitter: { card: 'summary_large_image', title: HOME_TITLE, description: HOME_DESCRIPTION },
 };
 
 export const viewport: Viewport = { themeColor: '#EDEBE7' };
@@ -38,6 +46,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Nav />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

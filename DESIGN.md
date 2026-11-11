@@ -290,8 +290,8 @@ A plan is a white window with the wash at its top: name, one line of purpose, a 
 ### Comparison Table
 One white frame, 28px radius. Group rows sit on `paper` in 13px bold `ink-4`; values are 800 weight with tabular figures; included is a `moss-dot` check, not included is an `ink-5` dash, each with screen-reader text. The header row sticks under the nav on wide screens; under 760px the frame scrolls sideways with the label column pinned.
 
-### Usage Meter
-A window listing the bundled model's three windows (5 hours, 7 days, month) as "used of cap" with tabular figures over 8px tracks filled with the mark gradient, closed by a moss row for workspaces on their own key.
+### Meter
+A window of labeled rows, each a value in tabular figures over an 8px track filled with the mark gradient. `/investors` uses it for the use of funds. `/pricing` has none: the site shows no token counts (owner, 2026-09-27).
 
 ### Ask Window (signature)
 The hero demo: a white window with the wash bleeding from its top, a thread (question bubble, run steps that collapse to one line, the streamed answer with citation chips, an Answered from list), a Try row of chips and the composer. The documents it cited lift, gain a blue ring and a numbered badge.
